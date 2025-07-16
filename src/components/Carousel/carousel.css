@@ -1,0 +1,36 @@
+.tech-card {
+    display: flex;
+  flex-direction: row !important;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  /* border: 3px solid red; */
+  /* background: #fff; */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  font-weight: bold;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 80%;
+  height: 80%;
+}
+
+
+.mySwiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
