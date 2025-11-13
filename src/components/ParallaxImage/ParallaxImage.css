@@ -25,7 +25,12 @@
 /* Capa superior: se mueve lentamente hacia la izquierda */
 .parallax_top {
   z-index: 10;
-  animation: moveTop 6s linear forwards;
+  animation: moveTop 16s linear forwards;
+
+     @media (max-width: 700px) {
+              animation: moveTopMobile 16s linear forwards;
+
+    }
 }
 
 @keyframes moveBg {
@@ -34,6 +39,10 @@
 }
 
 @keyframes moveTop {
-  0%   { transform: translateX(0); }
+  0%   { transform: translateX(0px); }
   100% { transform: translateX(-20px); }
+}
+@keyframes moveTopMobile {
+  0%   { transform: translateX(30px); }
+  100% { transform: translateX(0px); }
 }
