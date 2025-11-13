@@ -1,10 +1,7 @@
 import './styles/landingPage.css';
 import ParticlesBackground from './components/Particles/Particles';
-import { FaBeer } from "react-icons/fa";
 import { Carousel } from './components/Carousel/Carousel';
-import SkillCard from './components/SkillCard/SkillCard';
 import About from './components/About/About';
-import Parallax from './components/Parallax/Parallax';
 import Slider from './components/Slider/Slider';
 
 
@@ -13,18 +10,7 @@ function LandingPage() {
 
 
 
-    const skills = [{
-        name: 'Primer Proyecto Web',
-        description: 'Se trata de la primer pagina web que realice en mis inicios. Fue hecha con Vanilla Javascript y sass. Si bien tiene muchas cosas para mejorar, decidi incorporarla al portfolio ya que es mi inicio en el mundo del desarrollo web. Clickea abajo y te especifico que cambiaria de esa pagina.' 
-    },
-{
-    name: 'Tesis de Licenciatura',
-    description: 'Tesis de Licenciatura en Astronomia. Si queres saber mas sobre estrellas binarias, y como Python me ayudo a encontrarlas, hace click abajo.'
-},
-{
-    name: 'Chatbot OpenAI',
-    description: 'Descripción breve del proyecto'
-    }]
+
     return (
         <div  className="app-wrapper" >
             {/* Header */}
