@@ -1,0 +1,65 @@
+.slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  /* border: 2px solid  #7696ee; */
+  color:  #7696ee;
+  font-size: 1.8rem;
+  padding: 4px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease;
+  z-index: 10;
+}
+
+.nav-btn:hover {
+  background:  #7696ee;
+  color: white;
+}
+
+.nav-btn.left {
+  left: 2%;
+  z-index: 10000;
+}
+
+.nav-btn.right {
+  right: 2%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 50px;
+
+  width: 100%;
+  /* justify-content: center; */
+  gap: 10px;
+  /* position: absolute; */
+  /* bottom: 25px; */
+  /* width: 100%; */
+  z-index: 10;
+}
+
+.dot {
+  width: 30px;
+  margin: 0px;
+  height: 3px;
+  background: #ccc;
+  border-radius: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.dot.active {
+  background:  #7696ee;
+  /* width: 50px; */
+}

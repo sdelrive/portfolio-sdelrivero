@@ -7,7 +7,7 @@
 
 html, body {
     height: 100%;
-    font-family: 'Arial', sans-serif;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     color: #ffffff;
     background-color: #020411;
     overflow-x: hidden;
@@ -23,7 +23,7 @@ html, body {
 #tsparticles {
     position: fixed;
     top: 0;
-    left: 0;
+    left: -100px;
     width: 100%;
     height: 100%;
     z-index: -1;
@@ -43,8 +43,19 @@ html, body {
 }
 /* === HEADER === */
 .header {
-    padding: 2rem 0;
+
     background: transparent;
+}
+
+.header-decorator {
+    background:#7696ee;
+    height: 3px;
+    width: 100vw;
+    position: relative;
+    /* top: -40px; */
+    margin: none;
+    padding: none;
+    
 }
 
 .header .logo {
@@ -70,7 +81,7 @@ html, body {
 }
 
 .nav-link:hover {
-    color: #FFD700;
+    color: #646cffaa;
 }
 
 /* === SECTIONS === */
@@ -78,18 +89,8 @@ section {
     padding: 6rem 0;
 }
 
-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
 
-section p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    max-width: 700px;
-    margin: auto;
-}
+
 
 /* === PROJECTS === */
 .project-list {
@@ -99,17 +100,6 @@ section p {
     margin-top: 3rem;
 }
 
-.project-item {
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
-    transition: transform 0.3s ease;
-}
-
-.project-item:hover {
-    transform: scale(1.05);
-}
 
 
 
@@ -140,21 +130,179 @@ section p {
 
 /* === CONTACT === */
 .contact a {
-    color: #FFD700;
+    color: #000000;
     text-decoration: none;
     font-weight: bold;
 }
 
 .contact a:hover {
-    color: #FFA500;
+    color: #ffffffaa;
 }
 
 /* === FOOTER === */
 .footer {
-    background-color: #020411;
+    background-color:  #0a021ab4;
+
     text-align: center;
     padding: 2rem 0;
     font-size: 0.9rem;
     color: #aaa;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+
+.about-description {
+    margin-left: 50px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.about-description h2{
+  
+    padding-left: 26px;
+    text-align: left;
+  font-size: 4rem;
+  margin: 10px;
+  /* text-shadow: 0 0 10px rgba(255, 0, 0, 0.849) */
+    
+}
+
+.about-description p {
+    font-size: 1.2rem;
+      margin: 10px;
+    line-height: 1.8;
+   display: flex;
+  flex-direction: column;
+  align-items: flex-start;  /* alinea los hijos al inicio (izquierda) */
+  text-align: left;
+
+    max-width: 700px;
+}
+
+
+
+.contact-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(3px);
+}
+
+.contact-modal {
+  background: #050816;
+  border-radius: 16px;
+  padding: 24px 24px 20px;
+  max-width: 500px;
+  width: 90%;
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  animation: modal-fade-in 0.2s ease-out;
+}
+
+.contact-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.contact-modal__header h2 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.contact-modal__close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.contact-modal__subtitle {
+  margin: 0 0 16px 0;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.contact-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.contact-form__field label {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.contact-form__field input,
+.contact-form__field textarea {
+  background: rgba(12, 16, 35, 0.95);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 10px 12px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.contact-form__field input:focus,
+.contact-form__field textarea:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.4);
+}
+
+.contact-form__field textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+
+.contact-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+/* Estilos SOLO para los botones dentro del modal */
+.contact-modal .btn {
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.contact-modal .btn--filled {
+  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  color: white;
+  border: none;
+}
+
+.contact-modal .btn--outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+}
+
+/* Animación suave al abrir */
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }

@@ -3,6 +3,9 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+    width: 100%;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+   background-color: #0a021a25;
 }
 
 .logo {
@@ -39,4 +42,15 @@
 
 .read-the-docs {
   color: #888;
+}
+
+
+.header-decorator{
+  /* height: 30px; */
+  position: relative;
+  top: -50px;
+  /* border: 1px solid red; */
+  width: 100vw;
+  min-height: 20px;
+  height: 20px !important;
 }
