@@ -167,6 +167,12 @@ section {
   margin: 10px;
   /* text-shadow: 0 0 10px rgba(255, 0, 0, 0.849) */
     
+     @media (max-width: 700px) {
+                   padding-left: 0px;
+                     font-size: 3rem;
+
+
+    }
 }
 
 .about-description p {

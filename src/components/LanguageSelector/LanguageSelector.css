@@ -24,7 +24,7 @@
 .lang-dropdown {
   position: absolute;
   top: 130%;
-  left: 0;
+  left: 65px;
   background: rgba(255, 255, 255, 0);
   border: 1px solid #ddd;
   border-radius: 6px;
