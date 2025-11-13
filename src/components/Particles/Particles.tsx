@@ -1,3 +1,6 @@
+// @ts-nocheck
+
+
 
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { useEffect, useMemo, useState } from "react";

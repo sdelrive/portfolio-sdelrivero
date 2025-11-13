@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
+
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -8,7 +9,7 @@ import './carousel.css'
 
 
 // import required modules
-import { Autoplay, FreeMode, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, FreeMode } from 'swiper/modules';
 
 
 export const Carousel = () => {
