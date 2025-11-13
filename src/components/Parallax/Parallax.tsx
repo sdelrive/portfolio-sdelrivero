@@ -1,7 +1,8 @@
 // @ts-nocheck
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ParallaxImage from "../ParallaxImage/ParallaxImage";
 import "./Parallax.css";
+import { LanguageContext } from "../../LandingPage";
 
 export default function Parallax({ title, description, background, topground }) {
   const [showForm, setShowForm] = useState(false);
@@ -10,6 +11,16 @@ export default function Parallax({ title, description, background, topground }) 
     email: "",
     message: "",
   });
+
+
+   const context = useContext(LanguageContext);
+  
+    if (!context) {
+      throw new Error("Slider must be used within a LanguageContext.Provider");
+    }
+  
+    const { language } = context; // 'ESP' o 'ENG', por ejemplo
+  
 
   const onContact = () => {
     setShowForm(true);
@@ -63,14 +74,14 @@ export default function Parallax({ title, description, background, topground }) 
 
             <div className="hero__buttons">
               <button onClick={onContact} className="btn btn--filled">
-                Contactame!
+                { language == 'ENG' ? 'Contact me' : 'Contactame!'} 
               </button>
 
               <button
                 className="btn btn--outline"
                 onClick={() => {
                   const link = document.createElement("a");
-                  link.href = "/src/assets/curriculum.pdf";
+                  link.href = "/curriculum.pdf";
                   link.download = "Curriculum_Santiago_del_Rivero.pdf";
                   link.click();
                 }}

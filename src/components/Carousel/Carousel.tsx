@@ -106,7 +106,20 @@ const techs = [
             modules={[Autoplay, FreeMode]}
 
       spaceBetween={10}
-      slidesPerView={5}
+  breakpoints={{
+    0: {
+      slidesPerView: 2, // móviles
+    },
+    640: {
+      slidesPerView: 3, // tablets
+    },
+    1024: {
+      slidesPerView: 5, // desktop
+    },
+    1440: {
+      slidesPerView: 6, // pantallas grandes
+    },
+  }}
       speed={5000}           // controla la velocidad de desplazamiento
       freeMode={{
         enabled: true,       // activa FreeMode

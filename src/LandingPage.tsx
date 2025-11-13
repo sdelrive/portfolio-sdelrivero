@@ -3,15 +3,33 @@ import ParticlesBackground from './components/Particles/Particles';
 import { Carousel } from './components/Carousel/Carousel';
 import About from './components/About/About';
 import Slider from './components/Slider/Slider';
+import { createContext, useState } from 'react';
+import LanguageSelector from './components/LanguageSelector/LanguageSelector';
+
+
+
+
+type LanguageContextType = {
+  language: string;
+  setLanguage: (lang: string) => void;
+};
+
+export const LanguageContext = createContext<LanguageContextType | null>(null);
+
+
 
 
 function LandingPage() {
 
 
+      const lng = navigator.language.includes('es') ? 'ESP' : 'ENG'
+
+  const [language, setLanguage] = useState<string>(lng)
 
 
 
     return (
+        <LanguageContext.Provider value={{ language, setLanguage }}>
         <div  className="app-wrapper" >
             {/* Header */}
         <ParticlesBackground />
@@ -19,7 +37,10 @@ function LandingPage() {
         <div className='main'>
 
 
+
             <header className="header space-background">
+
+                <LanguageSelector />
                 <div className='header-decorator'>
                 </div>
                 {/* <div className="container">
@@ -56,7 +77,7 @@ function LandingPage() {
             {/* Skills Section */}
             <section id="skills" className="skills">
                 <div className="container">
-                    <h2>Habilidades</h2>
+                    <h2> { language == 'ESP' ? 'Habilidades' : 'Skills' } </h2>
                     <Carousel />
                 </div>
             </section>
@@ -64,9 +85,9 @@ function LandingPage() {
             {/* Contact Section */}
             <section id="contact" className="contact">
                 <div className="container">
-                    <h2>Contacto</h2>
-                    <p>¿Quieres trabajar conmigo? ¡Hablemos!</p>
-                    <a href="mailto:tuemail@example.com" className="btn contact-btn">Envíame un correo</a>
+                    <h2> { language == 'ESP' ? 'Contacto' : 'Contact me' } </h2>
+                    <p> { language == 'ESP' ? '¿Quieres trabajar conmigo? ¡Hablemos!' : 'Want to talk? Contact me!' }</p>
+                    <a href="mailto:tuemail@example.com" className="btn contact-btn">{ language == 'ENG' ? 'Send me an email' : 'Enviame un correo' }</a>
                 </div>
             </section>
 
@@ -79,6 +100,9 @@ function LandingPage() {
         </div>
 
     </div>
+
+        </LanguageContext.Provider>
+
     );
 }
 

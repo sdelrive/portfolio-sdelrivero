@@ -1,26 +1,48 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Parallax from "../Parallax/Parallax";
 import './Slider.css'
+import { LanguageContext } from "../../LandingPage";
 
-const slides = [
-  {
-    title: "Experiencias digitales que inspiran confianza.",
-    description:
-      "Diseño y desarrollo de interfaces modernas, rápidas y accesibles usando tecnologías como React, Vite y Tailwind. Creá una presencia online sólida y atractiva para tu negocio.",
-    background: "/src/assets/background.png",
-    topground: "/src/assets/topground.webp",
-  },
-  {
-    title: "Arquitecturas robustas para aplicaciones escalables.",
-    description:
-      "Implemento servicios en Node.js y NestJS conectados a bases de datos como DynamoDB o MongoDB, asegurando rendimiento, seguridad y facilidad de mantenimiento.",
-     background: "/src/assets/background2.png",
-    topground: "/src/assets/topground2.webp",
-  }
-];
+
+
 
 
 const Slider = () => {
+
+ const context = useContext(LanguageContext);
+
+  if (!context) {
+    throw new Error("Slider must be used within a LanguageContext.Provider");
+  }
+
+  const { language } = context; // 'ESP' o 'ENG', por ejemplo
+
+  const slides = [
+    {
+      title:
+        language === "ESP"
+          ? "Experiencias digitales que inspiran confianza."
+          : "Digital experiences that inspire trust.",
+      description:
+        language === "ESP"
+          ? "Diseño y desarrollo de interfaces modernas, rápidas y accesibles usando tecnologías como React, Vite y Tailwind. Creá una presencia online sólida y atractiva para tu negocio."
+          : "I design and develop modern, fast and accessible interfaces using technologies like React, Vite and Tailwind. Build a solid and attractive online presence for your business.",
+      background: "/background.png",
+      topground: "/topground.webp",
+    },
+    {
+      title:
+        language === "ESP"
+          ? "Arquitecturas robustas para aplicaciones escalables."
+          : "Robust architectures for scalable applications.",
+      description:
+        language === "ESP"
+          ? "Implemento servicios en Node.js y NestJS conectados a bases de datos como DynamoDB o MongoDB, asegurando rendimiento, seguridad y facilidad de mantenimiento."
+          : "I implement services in Node.js and NestJS connected to databases like DynamoDB or MongoDB, ensuring performance, security, and maintainability.",
+      background: "/background2.png",
+      topground: "/topground2.webp",
+    },
+  ];
 
 
   const [current, setCurrent] = useState(0);
@@ -29,7 +51,7 @@ const Slider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-    }, 10000);
+    }, 60000);
     return () => clearInterval(interval);
   }, []);
 
