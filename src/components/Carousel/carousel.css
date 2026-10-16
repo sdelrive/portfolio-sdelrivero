@@ -15,6 +15,12 @@
   height: 100%;
 }
 
+/* Swiper oculta todo lo que sale de su contenedor: este espacio arriba y abajo
+   evita que la sombra de las tarjetas quede cortada */
+.swiper.mySwiper {
+  padding: 16px 0;
+}
+
 .swiper-slide {
   text-align: center;
   font-size: 18px;

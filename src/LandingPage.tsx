@@ -3,32 +3,44 @@ import ParticlesBackground from './components/Particles/Particles';
 import { Carousel } from './components/Carousel/Carousel';
 import About from './components/About/About';
 import Brochures from './components/Brochure/Brochures';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import LanguageSelector from './components/LanguageSelector/LanguageSelector';
+import ThemeToggle from './components/ThemeToggle/ThemeToggle';
+import { applyTheme, getInitialTheme, type Theme } from './theme';
 import { LanguageContext } from './i18n/LanguageContext';
 import { translations, type Language } from './i18n/translations';
-import { CONTACT_EMAIL, LINKEDIN_URL, PHONE_NUMBER, WHATSAPP_URL } from './constants';
-import { FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import { CONTACT_EMAIL, LINKEDIN_URL } from './constants';
+import { FaEnvelope, FaLinkedin } from 'react-icons/fa';
 
 
 function LandingPage() {
 
-    const [language, setLanguage] = useState<Language>(
-        navigator.language.includes('es') ? 'ESP' : 'ENG'
-    );
+    const [language, setLanguage] = useState<Language>('ESP');
     const t = translations[language];
+
+    const [theme, setTheme] = useState<Theme>(getInitialTheme);
+
+    useEffect(() => {
+        applyTheme(theme);
+    }, [theme]);
 
     return (
         <LanguageContext.Provider value={{ language, setLanguage }}>
         <div  className="app-wrapper" >
             {/* Header */}
-        <ParticlesBackground />
+        <ParticlesBackground theme={theme} />
 
         <div className='main'>
 
             <header className="header space-background">
 
-                <LanguageSelector />
+                <div className="header-controls">
+                    <ThemeToggle
+                        theme={theme}
+                        onToggle={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                    />
+                    <LanguageSelector />
+                </div>
                 <div className='header-decorator'>
                 </div>
                 {/* <div className="container">
@@ -79,8 +91,8 @@ function LandingPage() {
                         <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="contact-link">
                             <FaLinkedin aria-hidden="true" /> LinkedIn
                         </a>
-                        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="contact-link">
-                            <FaWhatsapp title="WhatsApp" /> {PHONE_NUMBER}
+                        <a href={`mailto:${CONTACT_EMAIL}`} className="contact-link">
+                            <FaEnvelope aria-hidden="true" /> {CONTACT_EMAIL}
                         </a>
                     </div>
                 </div>

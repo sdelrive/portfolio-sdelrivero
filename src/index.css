@@ -10,14 +10,47 @@
    
 
   color-scheme: dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #0a021a;
+  color: var(--text);
+  background-color: var(--bg);
+
+  /* === TEMA OSCURO (por defecto) === */
+  --bg: #020411;
+  --bg-overlay: #0a021ad3;
+  --ink: 255 255 255; /* base de textos y líneas translúcidas: rgb(var(--ink) / 0.5) */
+  --text: #ffffff;
+  --text-subtle: #aaaaaa;
+  --brand: #7696ee;
+  --surface: #050816;
+  --surface-raised: #0d0a24;
+  --input-bg: rgba(12, 16, 35, 0.95);
+  --footer-bg: #0a021ab4;
+  --mock-bg: linear-gradient(160deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  --shadow: rgba(0, 0, 0, 0.5);
+  --on-accent: #0a021a;
   /* background-color: #242424; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* === TEMA CLARO === */
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f4f6fb;
+  --bg-overlay: rgba(244, 246, 251, 0.82);
+  --ink: 15 23 42;
+  --text: #0f172a;
+  --text-subtle: #64748b;
+  --brand: #4f6bd8;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --input-bg: #f8fafc;
+  --footer-bg: rgba(255, 255, 255, 0.7);
+  --mock-bg: #ffffff;
+  --shadow: rgba(15, 23, 42, 0.14);
+  --on-accent: #ffffff;
 }
 
 a {
@@ -84,7 +117,7 @@ button:focus-visible {
   padding: 0px;
   margin: 0px;
   align-items: center;
-   background-color: #0a021ad3;
+   background-color: var(--bg-overlay);
    border-radius: 0.5;
 
 }

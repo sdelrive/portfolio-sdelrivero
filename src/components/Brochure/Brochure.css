@@ -1,23 +1,36 @@
 /* === FOLLETOS === */
 .brochure {
-  --accent: #7696ee;
+  --accent: var(--accent-dark);
   --accent-soft: color-mix(in srgb, var(--accent) 16%, transparent);
-  --surface: #0d0a24;
+  --glow-x: 12%;
 
   position: relative;
+  isolation: isolate;
   width: 100%;
   padding: 6rem 2rem;
-  background:
-    radial-gradient(ellipse 60% 80% at 10% 30%, var(--accent-soft), transparent 70%),
-    rgba(10, 2, 26, 0.65);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
   overflow: hidden;
 }
 
 .brochure--reverse {
-  background:
-    radial-gradient(ellipse 60% 80% at 90% 30%, var(--accent-soft), transparent 70%),
-    rgba(10, 2, 26, 0.65);
+  --glow-x: 88%;
+}
+
+/* Brillo del color del folleto, sin fondo sólido ni bordes: se desvanece arriba y abajo
+   para fundirse con el fondo de estrellas y con los folletos vecinos */
+.brochure::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 75% at var(--glow-x) 50%, var(--accent-soft), transparent 70%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+}
+
+/* en modo claro, cada folleto usa una versión más oscura de su color para que se lea */
+:root[data-theme='light'] .brochure {
+  --accent: var(--accent-light);
 }
 
 /* anula el `margin: auto` global dentro del folleto */
@@ -58,14 +71,14 @@
   font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 800;
   line-height: 1.1;
-  color: #fff;
+  color: var(--text);
 }
 
 .brochure__description {
   max-width: 560px;
   font-size: 1.1rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgb(var(--ink) / 0.8);
 }
 
 .brochure__points {
@@ -79,7 +92,7 @@
   position: relative;
   padding-left: 1.6rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgb(var(--ink) / 0.9);
 }
 
 .brochure__points li::before {
@@ -127,10 +140,10 @@
 
 .mock {
   border-radius: 14px;
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--mock-bg);
+  border: 1px solid rgb(var(--ink) / 0.1);
   box-shadow:
-    0 30px 60px rgba(0, 0, 0, 0.45),
+    0 30px 60px var(--shadow),
     0 0 80px color-mix(in srgb, var(--accent) 18%, transparent);
   overflow: hidden;
 }
@@ -139,14 +152,14 @@
   display: flex;
   gap: 6px;
   padding: 12px 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgb(var(--ink) / 0.08);
 }
 
 .mock__bar span {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.18);
+  background: rgb(var(--ink) / 0.18);
 }
 
 .mock__body {
@@ -160,7 +173,7 @@
   display: block;
   height: 8px;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgb(var(--ink) / 0.12);
 }
 
 .mock-line--title {
@@ -218,8 +231,8 @@
   gap: 6px;
   padding: 8px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgb(var(--ink) / 0.04);
+  border: 1px solid rgb(var(--ink) / 0.08);
 }
 
 .mock-card--highlight {
@@ -235,7 +248,7 @@
   padding: 2px 5px;
   border-radius: 4px;
   background: var(--accent);
-  color: #0a021a;
+  color: var(--on-accent);
   font-size: 8px;
   font-weight: 800;
   letter-spacing: 0.04em;
@@ -247,7 +260,7 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgb(var(--ink) / 0.08);
 }
 
 /* Celular que flota sobre la ventana (frontend) */
@@ -262,9 +275,9 @@
   gap: 6px;
   padding: 14px 9px;
   border-radius: 18px;
-  background: var(--surface);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55);
+  background: var(--surface-raised);
+  border: 1px solid rgb(var(--ink) / 0.16);
+  box-shadow: 0 20px 40px var(--shadow);
   overflow: hidden;
 }
 
@@ -283,53 +296,60 @@
   aspect-ratio: 16 / 10;
 }
 
-/* Diagrama (backend) */
-.diagram {
+/* Resultados de búsqueda (SEO) */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgb(var(--ink) / 0.06);
+  border: 1px solid rgb(var(--ink) / 0.12);
+  color: rgb(var(--ink) / 0.85);
+  font-size: 13px;
+}
+
+.search-bar svg {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.serp-result {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  opacity: 0.55;
+}
+
+.serp-result--top {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--accent) 25%, transparent);
+  opacity: 1;
+}
+
+.serp-result__url {
   display: block;
-  width: 100%;
-  height: auto;
+  width: 32%;
+  height: 6px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--accent) 55%, transparent);
 }
 
-.diagram__flows path {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 2;
-  stroke-dasharray: 6 8;
-  opacity: 0.75;
-  animation: brochure-flow 1.2s linear infinite;
-}
-
-@keyframes brochure-flow {
-  to {
-    stroke-dashoffset: -28;
-  }
-}
-
-.diagram rect,
-.diagram__db path,
-.diagram__db ellipse {
-  fill: var(--surface);
-  stroke: rgba(255, 255, 255, 0.22);
-  stroke-width: 1.5;
-}
-
-.diagram__node--accent rect {
-  fill: color-mix(in srgb, var(--accent) 22%, var(--surface));
-  stroke: var(--accent);
-}
-
-.diagram__db path,
-.diagram__db ellipse {
-  stroke: var(--accent);
-}
-
-.diagram text {
-  fill: #fff;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  text-anchor: middle;
-  dominant-baseline: central;
+.serp-result__rank {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 11px;
+  font-weight: 800;
 }
 
 /* Espacios publicitarios (ad tech) */
@@ -391,15 +411,15 @@
   gap: 12px;
   padding: 10px 14px;
   border-radius: 12px;
-  background: var(--surface);
+  background: var(--surface-raised);
   border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 16px 32px var(--shadow);
 }
 
 .mock-chip__label {
   font-size: 12px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgb(var(--ink) / 0.85);
 }
 
 .mock-chip__bars {
@@ -413,6 +433,19 @@
   width: 6px;
   border-radius: 2px;
   background: var(--accent);
+}
+
+.mock-chip__trend {
+  width: 64px;
+  height: 28px;
+}
+
+.mock-chip__trend polyline {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 @media (max-width: 860px) {
@@ -435,11 +468,5 @@
 
   .mock-chip {
     right: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .diagram__flows path {
-    animation: none;
   }
 }

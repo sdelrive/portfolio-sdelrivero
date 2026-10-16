@@ -8,15 +8,16 @@ type BrochureProps = {
   points: readonly string[];
   techs: readonly string[];
   accent: string;
+  accentLight: string;
   reverse?: boolean;
   children: ReactNode;
 };
 
-const Brochure = ({ eyebrow, title, description, points, techs, accent, reverse = false, children }: BrochureProps) => {
+const Brochure = ({ eyebrow, title, description, points, techs, accent, accentLight, reverse = false, children }: BrochureProps) => {
   return (
     <section
       className={`brochure${reverse ? ' brochure--reverse' : ''}`}
-      style={{ '--accent': accent } as CSSProperties}
+      style={{ '--accent-dark': accent, '--accent-light': accentLight } as CSSProperties}
     >
       <div className="brochure__inner">
         <div className="brochure__text">
