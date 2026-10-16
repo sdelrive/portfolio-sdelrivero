@@ -14,7 +14,8 @@ const About = () => {
                 <div className="container about-description">
                     <h2>{t.about.title}</h2>
                     <div className="about-text">
-                      {t.about.text}
+                      <span className="about-text__full">{t.about.text}</span>
+                      <span className="about-text__short">{t.about.textShort}</span>
                       <hr />
                     </div>
                     <div className="about-actions">

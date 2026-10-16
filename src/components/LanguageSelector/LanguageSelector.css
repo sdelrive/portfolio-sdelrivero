@@ -1,14 +1,13 @@
 .lang-container {
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: center;
-  right: 0px;
   gap: 4px;
   cursor: pointer;
   font-family: "Inter", system-ui, sans-serif;
   font-weight: 400;
   font-size:1.2rem;
-  color: white;
+  color: var(--text);
   user-select: none;
   width: 150px;
 }

@@ -1,6 +1,7 @@
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import type { ISourceOptions } from "@tsparticles/engine";
 import { useEffect, useMemo, useState } from "react";
+import type { Theme } from "../../theme";
 // import { loadAll } from "@/tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
 // import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
 import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
@@ -8,7 +9,13 @@ import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSl
 
 
 
-const ParticlesComponent = ({ id }: { id?: string }) => {
+// colores del fondo y de las partículas para cada tema (el fondo coincide con --bg)
+const THEME_COLORS: Record<Theme, { background: string; particles: string }> = {
+  dark: { background: "#020411", particles: "#ffffff" },
+  light: { background: "#f4f6fb", particles: "#4f6bd8" },
+};
+
+const ParticlesComponent = ({ id, theme }: { id?: string; theme: Theme }) => {
 
   const [init, setInit] = useState(false);
   // this should be run only once per application lifetime
@@ -31,7 +38,7 @@ const ParticlesComponent = ({ id }: { id?: string }) => {
       "autoPlay": true,
       "background": {
         "color": {
-          "value": "#020411"
+          "value": THEME_COLORS[theme].background
         },
         // "image": "url('http://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/1237px-NASA_logo.svg.png')",
         // "position": "50% 50%",
@@ -217,7 +224,7 @@ const ParticlesComponent = ({ id }: { id?: string }) => {
           }
         },
         "color": {
-          "value": "#ffffff",
+          "value": THEME_COLORS[theme].particles,
           "animation": {
             "h": {
               "count": 0,
@@ -542,7 +549,7 @@ const ParticlesComponent = ({ id }: { id?: string }) => {
         }
       }
     }),
-    [],
+    [theme],
   );
 
 

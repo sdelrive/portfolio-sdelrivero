@@ -3,7 +3,8 @@ export type Language = 'ESP' | 'ENG';
 const ESP = {
   about: {
     title: 'Bienvenidos',
-    text: 'Mi nombre es Santiago del Rivero, soy desarrollador full-stack uruguayo viviendo en Montevideo, UY. Tengo experiencia en el desarrollo de software, desarrollo de servicios y sitios web de calidad con flujos de miles de personas por día, garantizando servicios estables, escalables, resilientes y aplicando las más modernas soluciones tecnológicas. También cuento con experiencia liderando personas para garantizar la mejor calidad del producto.',
+    text: 'Mi nombre es Santiago del Rivero, Ingeniero de Software con experiencia en el mundo del retail y retail media. Desarrollo software, servicios y sitios web estables y escalables, preparados para miles de usuarios por día, y los combino con estrategias de marketing digital: posicionamiento SEO para que tus clientes te encuentren en Google e integraciones de publicidad para monetizar tu tráfico. Tecnología y marketing trabajando juntos para que tu negocio crezca online.',
+    textShort: 'Soy Santiago del Rivero, Ingeniero de Software con experiencia en retail y retail media. Desarrollo sitios y servicios escalables, y los potencio con SEO y publicidad digital para que tu negocio crezca online.',
     imageAlt: 'Ilustración de un desarrollador programando en su escritorio',
     contactButton: '¡Contactame!',
   },
@@ -14,19 +15,21 @@ const ESP = {
       description: 'Diseño y desarrollo de interfaces modernas, rápidas y accesibles usando tecnologías como React, Vite y Tailwind. Creá una presencia online sólida y atractiva para tu negocio.',
       points: [
         'Sitios y aplicaciones responsive, pensados primero para el celular',
-        'Carga rápida y buenas prácticas de SEO',
+        'Interfaces accesibles para todo tipo de usuarios',
         'Componentes reutilizables y fáciles de mantener',
       ],
     },
-    backend: {
-      eyebrow: 'Backend',
-      title: 'Arquitecturas robustas para aplicaciones escalables.',
-      description: 'Implemento servicios en Node.js y NestJS conectados a bases de datos como DynamoDB o MongoDB, asegurando rendimiento, seguridad y facilidad de mantenimiento.',
+    seo: {
+      eyebrow: 'SEO y posicionamiento',
+      title: 'Que tus clientes te encuentren en Google.',
+      description: 'Optimizo tu sitio para que aparezca entre los primeros resultados de búsqueda: estructura, contenido y rendimiento pensados para Google, para atraer visitas de calidad sin depender solo de la publicidad.',
       points: [
-        'APIs REST documentadas con Swagger',
-        'Servicios preparados para miles de usuarios por día',
-        'Despliegues con Docker, Kubernetes y AWS',
+        'SEO técnico: metaetiquetas, sitemap, datos estructurados y URLs limpias',
+        'Sitios rápidos que cumplen con las Core Web Vitals de Google',
+        'Seguimiento de posiciones y visitas con Google Search Console y Analytics',
       ],
+      searchQuery: 'desarrollador web en Montevideo',
+      trafficLabel: 'Visitas orgánicas',
     },
     adtech: {
       eyebrow: 'Marketing digital',
@@ -41,6 +44,9 @@ const ESP = {
       sponsoredLabel: 'Patrocinado',
       impressionsLabel: 'Impresiones',
     },
+  },
+  theme: {
+    toggle: 'Modo oscuro',
   },
   skills: {
     title: 'Habilidades',
@@ -73,7 +79,8 @@ export type Translations = typeof ESP;
 const ENG: Translations = {
   about: {
     title: 'Welcome',
-    text: "My name is Santiago del Rivero, I'm a full-stack developer from Uruguay currently living in Montevideo. I have experience building software, services, and high-traffic websites that handle thousands of users per day, ensuring stability, scalability, resilience, and the use of modern technological solutions. I also have experience leading teams to guarantee the highest product quality.",
+    text: "I'm Santiago del Rivero, a Software Engineer with experience in retail and retail media. I build stable, scalable software, services and websites ready for thousands of users per day, and I combine them with digital marketing strategies: SEO so your customers find you on Google, and ad integrations to monetize your traffic. Technology and marketing working together to help your business grow online.",
+    textShort: "I'm Santiago del Rivero, a Software Engineer with experience in retail and retail media. I build scalable websites and services, and boost them with SEO and digital advertising to help your business grow online.",
     imageAlt: 'Illustration of a developer coding at their desk',
     contactButton: 'Contact me',
   },
@@ -84,19 +91,21 @@ const ENG: Translations = {
       description: 'I design and develop modern, fast and accessible interfaces using technologies like React, Vite and Tailwind. Build a solid and attractive online presence for your business.',
       points: [
         'Responsive, mobile-first websites and apps',
-        'Fast loading and SEO best practices',
+        'Accessible interfaces for every kind of user',
         'Reusable, easy-to-maintain components',
       ],
     },
-    backend: {
-      eyebrow: 'Backend',
-      title: 'Robust architectures for scalable applications.',
-      description: 'I implement services in Node.js and NestJS connected to databases like DynamoDB or MongoDB, ensuring performance, security, and maintainability.',
+    seo: {
+      eyebrow: 'SEO & search ranking',
+      title: 'Get found by your customers on Google.',
+      description: 'I optimize your site to rank among the top search results: structure, content and performance built for Google, to attract quality traffic without relying only on ads.',
       points: [
-        'REST APIs documented with Swagger',
-        'Services built to handle thousands of users per day',
-        'Deployments with Docker, Kubernetes and AWS',
+        'Technical SEO: meta tags, sitemap, structured data and clean URLs',
+        "Fast sites that meet Google's Core Web Vitals",
+        'Ranking and traffic tracking with Google Search Console and Analytics',
       ],
+      searchQuery: 'web developer in Montevideo',
+      trafficLabel: 'Organic traffic',
     },
     adtech: {
       eyebrow: 'Digital marketing',
@@ -111,6 +120,9 @@ const ENG: Translations = {
       sponsoredLabel: 'Sponsored',
       impressionsLabel: 'Impressions',
     },
+  },
+  theme: {
+    toggle: 'Dark mode',
   },
   skills: {
     title: 'Skills',

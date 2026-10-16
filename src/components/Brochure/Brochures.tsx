@@ -1,24 +1,28 @@
 import { useLanguage } from '../../i18n/LanguageContext';
 import Brochure from './Brochure';
-import { AdTechVisual, BackendVisual, FrontendVisual } from './BrochureVisuals';
+import { AdTechVisual, FrontendVisual, SeoVisual } from './BrochureVisuals';
 
 // Para agregar un folleto: sumá una entrada acá y sus textos en translations.ts (brochures).
+// accent es el color en modo oscuro; accentLight, una versión más oscura que se lee sobre fondo claro.
 const BROCHURES = [
   {
     key: 'frontend',
     accent: '#7696ee',
+    accentLight: '#4f6bd8',
     techs: ['React', 'TypeScript', 'Vite', 'Tailwind'],
     Visual: FrontendVisual,
   },
   {
-    key: 'backend',
+    key: 'seo',
     accent: '#34d399',
-    techs: ['Node.js', 'NestJS', 'MongoDB', 'DynamoDB', 'Docker', 'AWS'],
-    Visual: BackendVisual,
+    accentLight: '#047857',
+    techs: ['Google Search Console', 'Google Analytics', 'Lighthouse', 'Schema.org'],
+    Visual: SeoVisual,
   },
   {
     key: 'adtech',
     accent: '#fbbf24',
+    accentLight: '#b45309',
     techs: ['Google Ad Manager', 'Topsort'],
     Visual: AdTechVisual,
   },
@@ -29,7 +33,7 @@ const Brochures = () => {
 
   return (
     <div id="services" className="brochures">
-      {BROCHURES.map(({ key, accent, techs, Visual }, i) => {
+      {BROCHURES.map(({ key, accent, accentLight, techs, Visual }, i) => {
         const { eyebrow, title, description, points } = t.brochures[key];
 
         return (
@@ -41,6 +45,7 @@ const Brochures = () => {
             points={points}
             techs={techs}
             accent={accent}
+            accentLight={accentLight}
             reverse={i % 2 === 1}
           >
             <Visual />
