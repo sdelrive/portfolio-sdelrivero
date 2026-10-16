@@ -28,7 +28,7 @@ const ESP = {
         'Sitios rápidos que cumplen con las Core Web Vitals de Google',
         'Seguimiento de posiciones y visitas con Google Search Console y Analytics',
       ],
-      searchQuery: 'desarrollador web en Montevideo',
+      searchQuery: 'local de comida rápida en Montevideo',
       trafficLabel: 'Visitas orgánicas',
     },
     adtech: {
@@ -104,7 +104,7 @@ const ENG: Translations = {
         "Fast sites that meet Google's Core Web Vitals",
         'Ranking and traffic tracking with Google Search Console and Analytics',
       ],
-      searchQuery: 'web developer in Montevideo',
+      searchQuery: 'fast food restaurant in Montevideo',
       trafficLabel: 'Organic traffic',
     },
     adtech: {
