@@ -1,8 +1,5 @@
-// @ts-nocheck
-
-
-
 import Particles, { initParticlesEngine } from "@tsparticles/react";
+import type { ISourceOptions } from "@tsparticles/engine";
 import { useEffect, useMemo, useState } from "react";
 // import { loadAll } from "@/tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
 // import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
@@ -11,7 +8,7 @@ import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSl
 
 
 
-const ParticlesComponent = (props) => {
+const ParticlesComponent = ({ id }: { id?: string }) => {
 
   const [init, setInit] = useState(false);
   // this should be run only once per application lifetime
@@ -29,12 +26,7 @@ const ParticlesComponent = (props) => {
     });
   }, []);
 
-  const particlesLoaded = (container: any) => {
-    console.log(container);
-  };
-
-
-  const options = useMemo(
+  const options = useMemo<ISourceOptions>(
     () => ({
       "autoPlay": true,
       "background": {
@@ -75,9 +67,9 @@ const ParticlesComponent = (props) => {
             "mode": "repulse"
           },
           "onDiv": {
-            "selectors": {},
+            "selectors": [],
             "enable": false,
-            "mode": {},
+            "mode": [],
             "type": "circle"
           },
           "onHover": {
@@ -260,9 +252,9 @@ const ParticlesComponent = (props) => {
           "close": true,
           "fill": true,
           "options": {},
-          "type": {}
+          "type": []
         },
-        "groups": [],
+        "groups": {},
         "move": {
           "angle": {
             "offset": 0,
@@ -554,7 +546,11 @@ const ParticlesComponent = (props) => {
   );
 
 
-  return <Particles id={props.id} init={particlesLoaded} options={options} />; 
+  if (!init) {
+    return null;
+  }
+
+  return <Particles id={id} options={options} />;
 };
 
 export default ParticlesComponent;

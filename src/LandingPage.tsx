@@ -2,31 +2,21 @@ import './styles/landingPage.css';
 import ParticlesBackground from './components/Particles/Particles';
 import { Carousel } from './components/Carousel/Carousel';
 import About from './components/About/About';
-import Slider from './components/Slider/Slider';
-import { createContext, useState } from 'react';
+import Brochures from './components/Brochure/Brochures';
+import { useState } from 'react';
 import LanguageSelector from './components/LanguageSelector/LanguageSelector';
-
-
-
-
-type LanguageContextType = {
-  language: string;
-  setLanguage: (lang: string) => void;
-};
-
-export const LanguageContext = createContext<LanguageContextType | null>(null);
-
-
+import { LanguageContext } from './i18n/LanguageContext';
+import { translations, type Language } from './i18n/translations';
+import { CONTACT_EMAIL, LINKEDIN_URL, PHONE_NUMBER, WHATSAPP_URL } from './constants';
+import { FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 
 
 function LandingPage() {
 
-
-      const lng = navigator.language.includes('es') ? 'ESP' : 'ENG'
-
-  const [language, setLanguage] = useState<string>(lng)
-
-
+    const [language, setLanguage] = useState<Language>(
+        navigator.language.includes('es') ? 'ESP' : 'ENG'
+    );
+    const t = translations[language];
 
     return (
         <LanguageContext.Provider value={{ language, setLanguage }}>
@@ -35,8 +25,6 @@ function LandingPage() {
         <ParticlesBackground />
 
         <div className='main'>
-
-
 
             <header className="header space-background">
 
@@ -55,12 +43,11 @@ function LandingPage() {
                 </div> */}
             </header>
 
-
-
             {/* About Section */}
             <About />
 
-            <Slider />
+            {/* Services Section */}
+            <Brochures />
 
             {/* Projects Section */}
             {/* <section id="projects" className="projects">
@@ -77,7 +64,7 @@ function LandingPage() {
             {/* Skills Section */}
             <section id="skills" className="skills">
                 <div className="container">
-                    <h2> { language == 'ESP' ? 'Habilidades' : 'Skills' } </h2>
+                    <h2>{t.skills.title}</h2>
                     <Carousel />
                 </div>
             </section>
@@ -85,16 +72,24 @@ function LandingPage() {
             {/* Contact Section */}
             <section id="contact" className="contact">
                 <div className="container">
-                    <h2> { language == 'ESP' ? 'Contacto' : 'Contact me' } </h2>
-                    <p> { language == 'ESP' ? '¿Quieres trabajar conmigo? ¡Hablemos!' : 'Want to talk? Contact me!' }</p>
-                    <a href="mailto:tuemail@example.com" className="btn contact-btn">{ language == 'ENG' ? 'Send me an email' : 'Enviame un correo' }</a>
+                    <h2>{t.contact.title}</h2>
+                    <p>{t.contact.text}</p>
+                    <a href={`mailto:${CONTACT_EMAIL}`} className="btn contact-btn">{t.contact.button}</a>
+                    <div className="contact-links">
+                        <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="contact-link">
+                            <FaLinkedin aria-hidden="true" /> LinkedIn
+                        </a>
+                        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="contact-link">
+                            <FaWhatsapp title="WhatsApp" /> {PHONE_NUMBER}
+                        </a>
+                    </div>
                 </div>
             </section>
 
             {/* Footer */}
             <footer className="footer">
                 <div className="container">
-                    <p>© 2025 Todos los derechos reservados.</p>
+                    <p>© {new Date().getFullYear()} Santiago del Rivero. {t.footer.rights}</p>
                 </div>
             </footer>
         </div>

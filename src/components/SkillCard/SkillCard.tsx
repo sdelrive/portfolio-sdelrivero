@@ -1,6 +1,11 @@
-import './SkillCard.css'
+import './skillCard.css'
 
-const SkillCard = ({ name, description}: any) => {
+type SkillCardProps = {
+  name: string;
+  description: string;
+};
+
+const SkillCard = ({ name, description }: SkillCardProps) => {
   return (
       <div className="project-item">
                             <h3 className='project-item-name'>{name}</h3>

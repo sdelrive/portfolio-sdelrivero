@@ -1,42 +1,23 @@
 // src/components/LanguageSelector.tsx
-import React, {useContext, useState } from "react";
-import "./LanguageSelector.css"; 
-import { LanguageContext } from "../../LandingPage";
-
-
-
+import React, { useState } from "react";
+import "./LanguageSelector.css";
+import { useLanguage } from "../../i18n/LanguageContext";
+import type { Language } from "../../i18n/translations";
 
 
 const LanguageSelector: React.FC = () => {
   const [open, setOpen] = useState(false);
 
-      const lng = navigator.language.includes('es') ? 'ESP' : 'ENG'
+  const { language, setLanguage } = useLanguage();
 
-  const [lang, setLang] = useState(lng);
-
-
-
-
-  // Get context with null check
-  const context = useContext(LanguageContext);
-
-  
-  // Handle the case where context might be null
-  if (!context) {
-    throw new Error('LanguageSelector must be used within a LanguageContext.Provider');
-  }
-  
-  const { setLanguage } = context;
-
-  const handleSelect = (newLang: string) => {
-    setLanguage(newLang)
-    setLang(newLang);
+  const handleSelect = (newLang: Language) => {
+    setLanguage(newLang);
     setOpen(false);
   };
 
   return (
     <div className="lang-container" onClick={() => setOpen(!open)}>
-      <span className="lang-text">{lang}</span>
+      <span className="lang-text">{language}</span>
       <svg
         className={`lang-arrow ${open ? "open" : ""}`}
         xmlns="http://www.w3.org/2000/svg"
